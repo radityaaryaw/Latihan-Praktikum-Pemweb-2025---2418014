@@ -1,0 +1,212 @@
+<!-- ALERT BOX -->
+ <!-- <!DOCTYPE html>
+<html>
+  <body>
+    <button onclick="myFunction()">Try It</button>
+    <script>
+      function myFunction() {
+        alert("Pemrograman Web 2024");
+      }
+    </script>
+  </body>
+</html> -->
+<!-- CONFIRM BOX -->
+ <!-- <!DOCTYPE html>
+<html>
+  <body>
+    <button onclick="myFunction()">Try It</button>
+    <p id="demo"></p>
+    <script>
+      function myFunction() {
+        let text = "";
+        let pil = confirm("apakah hari ini praktikum web ?");
+        if (pil == true) {
+          text = "Ya, sedang praktikum";
+        } else {
+          text = "Tidak ada praktikum";
+        }
+
+        document.getElementById("demo").innerHTML = text;
+      }
+    </script>
+  </body>
+</html> -->
+<!-- PROMPT BOX -->
+<!-- <!DOCTYPE html>
+<html>
+  <body>
+    <button onclick="myFunction()">Try It</button>
+    <p id="demo"></p>
+    <script>
+      function myFunction() {
+        let person = prompt("Silahkan masukkan nama ", "Saya");
+        if (person != null) {
+          document.getElementById(
+            "demo"
+          ).innerHTML = `Halo ${person} hari ini sedang ada praktikum web`;
+        }
+      }
+    </script>
+  </body>
+</html> -->
+
+<!-- EVENT -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Onclick</title>
+  </head>
+  <body>
+    <button id="btn" onclick="myFunction()">Coba Klik</button>
+    <p id="demo"></p>
+
+    <script>
+      function myFunction() {
+        document.getElementById("demo").innerHTML = `Hore, Kamu klik buttonnya`;
+      }
+    </script>
+  </body>
+</html> -->
+
+<!-- EVENT ONCHENGE -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Onchange</title>
+  </head>
+  <body>
+    <select name="prodi" id="prodi" onchange="myFunction()">
+      <option value="Teknik Informatika">Teknik Informatika</option>
+      <option value="Teknik Elektro">Teknik Elektro</option>
+      <option value="Teknik Industri">Teknik Industri</option>
+      <option value="Teknik Mesin">Teknik Mesin</option>
+      <option value="Teknik Kimia">Teknik Kimia</option>
+    </select>
+
+    <p id="demo"></p>
+
+    <script>
+      function myFunction() {
+        let x = document.getElementById("prodi").value;
+        document.getElementById("demo").innerHTML = `Pilihan mu adalah ${x}`;
+      }
+    </script>
+  </body>
+</html> -->
+
+<!-- EVENT ONCHANGE ADDEVENTLISTENER -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Onchange</title>
+</head>
+<body>
+  <select name="prodi" id="prodi">
+    <option value="Teknik Informatika">Teknik Informatika</option>
+    <option value="Teknik Elektro">Teknik Elektro</option>
+    <option value="Teknik Industri">Teknik Industri</option>
+    <option value="Teknik Mesin">Teknik Mesin</option>
+    <option value="Teknik Kimia">Teknik Kimia</option>
+  </select>
+
+  <p id="demo"></p>
+
+  <script>
+    const selectElement = document.getElementById("prodi");
+
+    selectElement.addEventListener("change", function() {
+      const selectedValue = this.value;
+      document.getElementById("demo").innerHTML = `Pilihan mu adalah ${selectedValue}`;
+    });
+  </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Onload</title>
+  </head>
+  <body onload="myFunction()">
+    <p id="demo"></p>
+
+    <script>
+      function myFunction() {
+        document.getElementById(
+          "demo"
+        ).innerHTML = `Halaman Web Berhasil Ditampilkan`;
+      }
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Local Storage</title>
+	<style>
+	   .contents {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border: 2px solid black;
+		padding: 15px;
+	   }
+	   #generateButton {
+		margin-top: 5px;
+		margin-bottom: 15px;
+	   }
+	</style>
+</head>
+   <body>
+	<center>
+	   <div class="contents">
+		<button id="incrementButton">Tambah nilai</button>
+		<button id="clear">Hapus storage</button>
+		<h3>Kamu sudah menekan tombol di atas sebanyak:</h3>
+		<h2 id="count">0</h2>
+	   </div>
+	</center>
+	<script>
+	   const localStorageKey = "JUMLAH_KLIK";
+		if (typeof Storage !== "undefined") {
+		   if (localStorage.getItem(localStorageKey) === null) {
+			localStorage.setItem(localStorageKey, 0);
+		   }
+              const Incrementbutton = document.querySelector("#incrementButton");
+		   const clearButton = document.querySelector("#clear");
+		   const countDisplay = document.querySelector("#count");
+		   countDisplay.innerText = localStorage.getItem(localStorageKey);
+		Incrementbutton.addEventListener("click", function () {
+		   let count = localStorage.getItem(localStorageKey);
+		   count++;
+		   localStorage.setItem(localStorageKey, count);
+		   countDisplay.innerText = localStorage.getItem(localStorageKey);
+				});
+		   clearButton.addEventListener("click", function () {
+		      localStorage.removeItem(localStorageKey);
+			countDisplay.innerText = 0;
+		   });
+		  } else {
+		    alert("Browser yang Anda gunakan tidak mendukung Web Storage");
+		}
+	</script>
+</body>
+</html>
+
+
+
+
